@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Omniplan Export</title>
+</head>
+<body>
+<h1>Omniplan Export</h1>
+
+<script>
+    async function createOmniplanUrl() {
+        try {
+            // Fetch the contents of the omniplan_export.js file
+            const response = await fetch('omniplan_export.js');
+            const fileContents = await response.text();
+
+            // URL-encode the contents
+            const encodedContents = encodeURIComponent(fileContents);
+
+            // Create the omniplan URL
+            const omniplanUrl = `omniplan:///omnijs-run?script=${encodedContents}`;
+
+            // Redirect to the Omniplan URL
+            window.location.href = omniplanUrl;
+        } catch (error) {
+            console.error('Error creating Omniplan URL:', error);
+        }
+    }
+
+    // Call the function to create the Omniplan URL
+    createOmniplanUrl();
+</script>
+</body>
+</html>
